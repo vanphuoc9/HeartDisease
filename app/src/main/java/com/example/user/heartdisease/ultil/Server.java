@@ -5,5 +5,5 @@ package com.example.user.heartdisease.ultil;
  */
 
 public class Server {
-    public static String getResult = "http://172.20.10.2:5000/getResult";
+    public static String getResult = "http://172.16.183.49:5000/getResult";
 }

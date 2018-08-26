@@ -52,6 +52,7 @@
                     <RadioGroup
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:id="@+id/radiogr_restecg"
                         >
                         <RadioButton
                             android:layout_width="match_parent"
@@ -59,6 +60,8 @@
                             android:text="Normal"
                             android:textSize="16sp"
                             android:layout_marginBottom="10dp"
+                            android:id="@+id/radio_ques2_restecg_normal"
+                            android:onClick="onRadioButtonClickRestecg"
 
                             />
                         <RadioButton
@@ -67,13 +70,16 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Having ST-T wave abnormality (T wave inversions and/or ST elevation or depression of > 0.05 mV)  "
+                            android:id="@+id/radio_ques2_restecg_abnormality"
+                            android:onClick="onRadioButtonClickRestecg"
                             />
                         <RadioButton
                             android:textSize="16sp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Showing probable or definite left ventricular hypertrophy by Estes' criteria"
-                            />
+                            android:onClick="onRadioButtonClickRestecg"
+                            android:id="@+id/radio_ques2_restecg_probable"/>
                     </RadioGroup>
 
                 </LinearLayout>
@@ -84,6 +90,8 @@
                     android:textSize="18sp"
                     android:textColor="#000"
                     android:layout_marginBottom="10dp"
+                    android:id="@+id/edit_thalach_ques2"
+                    android:inputType="number"
                     />
 
                 <LinearLayout
@@ -106,16 +114,21 @@
                         android:layout_height="match_parent"
                         android:orientation="horizontal"
                         android:layout_weight="2"
+                        android:id="@+id/radiogr_exang"
                         >
                         <RadioButton
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="True"
+                            android:id="@+id/radio_ques2_exercise_angina_true"
+                            android:onClick="onRadioButtonClickExang"
                             />
                         <RadioButton
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="False"
+                            android:id="@+id/radio_ques2_exercise_angina_false"
+                            android:onClick="onRadioButtonClickExang"
                             />
                     </RadioGroup>
                 </LinearLayout>
@@ -123,6 +136,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="ST depression induced by exercise relative to rest ?"
+                    android:id="@+id/edit_ques2_oldpeak"
+                    android:inputType="numberDecimal"
                     />
 
 
@@ -143,8 +158,9 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Canncel"
+            android:text="Cancel"
             android:padding="5dp"
+            android:id="@+id/btn_ques2_cancel"
             />
         <Button
             android:layout_width="0dp"
@@ -152,6 +168,7 @@
             android:layout_weight="1"
             android:text="Continue"
             android:padding="5dp"
+            android:id="@+id/btn_ques2_continue"
             />
 
 

@@ -50,21 +50,29 @@
                         />
                     <RadioGroup
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:id="@+id/radiogr_ques3_slope"
+                        >
                         <RadioButton
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="upsloping"
+                            android:id="@+id/radio_ques3_upsloping"
+                            android:onClick="onRadioButtonClickSlope"
                             />
                         <RadioButton
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="flat"
+                            android:id="@+id/radio_ques3_flat"
+                            android:onClick="onRadioButtonClickSlope"
                             />
                         <RadioButton
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="downsloping  "
+                            android:id="@+id/radio_ques3_downsloping"
+                            android:onClick="onRadioButtonClickSlope"
                             />
                     </RadioGroup>
                 </LinearLayout>
@@ -83,54 +91,36 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
+                        android:id="@+id/radiogr_ques3_ca"
                         >
-                        <LinearLayout
+                        <RadioButton
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:weightSum="2"
-                            android:gravity="center"
-                            android:layout_gravity="center"
-                            >
-                            <LinearLayout
-                                android:layout_weight="1"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical"
-
-                                >
-                                <RadioButton
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="0"
-                                    />
-                                <RadioButton
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="2"
-                                    />
-                            </LinearLayout>
-                            <LinearLayout
-                                android:layout_weight="1"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical"
-                                >
-                                <RadioButton
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="1"
-                                    />
-                                <RadioButton
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="3"
-                                    />
-                            </LinearLayout>
-
-                        </LinearLayout>
-
-
+                            android:text="0"
+                            android:id="@+id/radio_ques3_0"
+                            android:onClick="onRadioButtonClickCa"
+                            />
+                        <RadioButton
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="1"
+                            android:id="@+id/radio_ques3_1"
+                            android:onClick="onRadioButtonClickCa"
+                            />
+                        <RadioButton
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="2"
+                            android:id="@+id/radio_ques3_2"
+                            android:onClick="onRadioButtonClickCa"
+                            />
+                        <RadioButton
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="3"
+                            android:id="@+id/radio_ques3_3"
+                            android:onClick="onRadioButtonClickCa"
+                            />
                     </RadioGroup>
                 </LinearLayout>
 
@@ -142,21 +132,29 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:gravity="center"
+                        android:id="@+id/radiogr_ques3_thal"
                         >
                         <RadioButton
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="normal"
+                            android:id="@+id/radio_ques3_normal"
+                            android:onClick="onRadioButtonClickThal"
+
                             />
                         <RadioButton
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="fixed defect "
+                            android:id="@+id/radio_ques3_fixed"
+                            android:onClick="onRadioButtonClickThal"
                             />
                         <RadioButton
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="reversable defect "
+                            android:id="@+id/radio_ques3_defect"
+                            android:onClick="onRadioButtonClickThal"
                             />
 
                     </RadioGroup>
@@ -182,6 +180,7 @@
             android:layout_weight="1"
             android:text="Canncel"
             android:padding="5dp"
+            android:id="@+id/btn_ques3_cancel"
             />
         <Button
             android:layout_width="0dp"
@@ -189,6 +188,7 @@
             android:layout_weight="1"
             android:text="Disease"
             android:padding="5dp"
+            android:id="@+id/btn_ques3_disease"
             />
 
 

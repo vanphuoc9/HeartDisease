@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:weightSum="10"
+    android:background="#fff"
     tools:context="com.example.user.heartdisease.activity.QuestionActivity">
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,6 +20,7 @@
             android:layout_height="wrap_content"
             android:text="Heart Disease"
             android:textSize="30sp"
+            android:textColor="@color/colorAccent"
             />
 
     </LinearLayout>
@@ -42,6 +44,8 @@
                     android:layout_height="wrap_content"
                     android:hint="How old are you?"
                     android:layout_marginBottom="10dp"
+                    android:id="@+id/edit_question_old"
+                    android:inputType="number"
                     />
 
                 <LinearLayout
@@ -66,6 +70,7 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:layout_weight="2"
+                        android:id="@+id/radio_question_group_sex"
                         >
 
                         <RadioButton
@@ -73,12 +78,14 @@
                             android:layout_height="wrap_content"
                             android:text="Male"
                             android:onClick="onRadioButtonSexClicked"
+                            android:id="@+id/radio_question_male"
                             />
                         <RadioButton
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Female"
                             android:onClick="onRadioButtonSexClicked"
+                            android:id="@+id/radio_question_female"
                             />
                     </RadioGroup>
                 </LinearLayout>
@@ -93,58 +100,47 @@
                         android:layout_height="wrap_content"
                         android:text="Chest pain type "
                         android:layout_marginBottom="10dp"
+                        android:background="@drawable/border_button"
+
                         />
                     <RadioGroup
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:orientation="vertical"
+                        android:id="@+id/radio_question_group_chest"
                         >
-                        <LinearLayout
-                            android:layout_width="match_parent"
+                        <RadioButton
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:weightSum="2"
-                            android:layout_marginBottom="10dp"
-                            >
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:orientation="vertical"
-                                android:layout_weight="1"
-                                >
-                                <RadioButton
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Typical angina "
-                                    android:onClick="radiobtn_chest"
-                                    />
-                                <RadioButton
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Atypical angina "
-                                    android:onClick="radiobtn_chest"
-                                    />
-                            </LinearLayout>
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:orientation="vertical"
-                                android:layout_weight="1"
-                                >
-                                <RadioButton
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="Non-anginal pain "
-                                    android:onClick="radiobtn_chest"
-                                    />
-                                <RadioButton
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="Asymptomatic"
-                                    android:onClick="radiobtn_chest"
-                                    />
-                            </LinearLayout>
-                        </LinearLayout>
+                            android:text="Typical angina "
+                            android:onClick="onRadioButtonChestClicked"
+                            android:id="@+id/radio_question_typical"
+
+                            />
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Atypical angina "
+                            android:onClick="onRadioButtonChestClicked"
+                            android:id="@+id/radio_question_atypical"
+                            />
+
+
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Non-anginal pain "
+                            android:onClick="onRadioButtonChestClicked"
+                            android:id="@+id/radio_question_non"
+                            />
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Asymptomatic"
+                            android:onClick="onRadioButtonChestClicked"
+                            android:id="@+id/radio_question_asym"
+                            />
+
                     </RadioGroup>
                 </LinearLayout>
                 <LinearLayout
@@ -158,6 +154,8 @@
                         android:hint="Resting blood pressure (mm Hg) ?"
                         android:textSize="18sp"
                         android:textColor="#000"
+                        android:id="@+id/edit_question_blood_pressure"
+                        android:inputType="number"
                         />
                 </LinearLayout>
                 <LinearLayout
@@ -171,6 +169,8 @@
                         android:hint="Serum cholestoral in mg/dl  ?"
                         android:textSize="18sp"
                         android:textColor="#000"
+                        android:id="@+id/edit_question_serum"
+                        android:inputType="number"
                         />
                 </LinearLayout>
 
@@ -195,16 +195,21 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
                         android:orientation="horizontal"
+                        android:id="@+id/radio_question_group_blood_sugar"
                         >
                         <RadioButton
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="True"
+                            android:onClick="onRadioButtonClickBloodSugar"
+                            android:id="@+id/radio_question_true"
                             />
                         <RadioButton
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="False"
+                            android:onClick="onRadioButtonClickBloodSugar"
+                            android:id="@+id/radio_question_false"
                             />
                     </RadioGroup>
 
@@ -227,8 +232,13 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Canncel"
-            android:padding="5dp"
+            android:text="Cancel"
+            android:id="@+id/btn_question_canncel"
+            android:background="@drawable/boder"
+            android:textColor="@color/colorAccent"
+            android:layout_margin="5dp"
+            android:layout_gravity="center"
+
             />
         <Button
             android:layout_width="0dp"
@@ -236,6 +246,11 @@
             android:layout_weight="1"
             android:text="Continue"
             android:padding="5dp"
+            android:id="@+id/btn_question_continue"
+            android:background="@color/colorAccent"
+            android:textColor="#ffffff"
+            android:layout_margin="5dp"
+            android:layout_gravity="center"
             />
 
 
