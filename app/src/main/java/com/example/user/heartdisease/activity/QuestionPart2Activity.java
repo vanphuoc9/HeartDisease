@@ -52,10 +52,10 @@ public class QuestionPart2Activity extends AppCompatActivity {
                         trestbps = bundle.getString("trestps").toString().trim();
                         chol = bundle.getString("chol").toString().trim();
                         fbs = bundle.getString("fbs").toString().trim();
-                        CheckConnect.ShowToast(getApplicationContext(), restecg+" "+exang+" "+thalach+" "+oldpeak);
+                        //CheckConnect.ShowToast(getApplicationContext(), restecg+" "+exang+" "+thalach+" "+oldpeak);
                         //                radioGroupRestecg.clearCheck();
                         //                radioGroupExang.clearCheck();
-                        CheckConnect.ShowToast(getApplicationContext(),age + " "+sex+ " "+cp+" "+trestbps+ " "+chol+" "+fbs);
+                        //CheckConnect.ShowToast(getApplicationContext(),age + " "+sex+ " "+cp+" "+trestbps+ " "+chol+" "+fbs);
                         Intent intent = new Intent(getApplicationContext(),QuestionPart3Activity.class);
                         Bundle bun = new Bundle();
                         bun.putString("age",age);

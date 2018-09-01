@@ -19,6 +19,7 @@
             android:layout_height="wrap_content"
             android:text="Heart Disease"
             android:textSize="30sp"
+            android:textColor="@color/colorAccent"
             />
 
     </LinearLayout>
@@ -48,6 +49,7 @@
                         android:layout_height="wrap_content"
                         android:text="Resting electrocardiographic results ?"
                         android:layout_marginBottom="10dp"
+                        android:background="@drawable/border_button"
                         />
                     <RadioGroup
                         android:layout_width="match_parent"
@@ -161,6 +163,10 @@
             android:text="Cancel"
             android:padding="5dp"
             android:id="@+id/btn_ques2_cancel"
+            android:background="@drawable/boder"
+            android:textColor="@color/colorAccent"
+            android:layout_margin="5dp"
+            android:layout_gravity="center"
             />
         <Button
             android:layout_width="0dp"
@@ -169,6 +175,10 @@
             android:text="Continue"
             android:padding="5dp"
             android:id="@+id/btn_ques2_continue"
+            android:background="@color/colorAccent"
+            android:textColor="#ffffff"
+            android:layout_margin="5dp"
+            android:layout_gravity="center"
             />
 
 

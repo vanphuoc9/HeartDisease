@@ -19,6 +19,7 @@
             android:layout_height="wrap_content"
             android:text="Heart Disease"
             android:textSize="30sp"
+            android:textColor="@color/colorAccent"
             />
 
     </LinearLayout>
@@ -46,6 +47,7 @@
                     <Button
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:background="@drawable/border_button"
                         android:text="The slope of the peak exercise ST segment ?"
                         />
                     <RadioGroup
@@ -85,6 +87,7 @@
                     <Button
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:background="@drawable/border_button"
                         android:text="number of major vessels (0-3) colored by flourosopy ?"
                         />
                     <RadioGroup
@@ -181,6 +184,10 @@
             android:text="Canncel"
             android:padding="5dp"
             android:id="@+id/btn_ques3_cancel"
+            android:background="@drawable/boder"
+            android:textColor="@color/colorAccent"
+            android:layout_margin="5dp"
+            android:layout_gravity="center"
             />
         <Button
             android:layout_width="0dp"
@@ -189,6 +196,10 @@
             android:text="Disease"
             android:padding="5dp"
             android:id="@+id/btn_ques3_disease"
+            android:background="@color/colorAccent"
+            android:textColor="#ffffff"
+            android:layout_margin="5dp"
+            android:layout_gravity="center"
             />
 
 

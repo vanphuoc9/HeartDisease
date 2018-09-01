@@ -1,11 +1,15 @@
 package com.example.user.heartdisease.activity;
 
+import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -19,6 +23,9 @@ import com.example.user.heartdisease.ultil.Server;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 public class QuestionPart3Activity extends AppCompatActivity {
     private RadioGroup radioGroupSlope, radioGroupCa, radioGroupThal;
@@ -46,7 +53,7 @@ public class QuestionPart3Activity extends AppCompatActivity {
             public void onClick(View v) {
                 if (choiceCa != false && choiceSlope != false && choiceThal != false){
 
-                    CheckConnect.ShowToast(getApplicationContext(), slope+" "+ca+" "+thal);
+                    //CheckConnect.ShowToast(getApplicationContext(), slope+" "+ca+" "+thal);
                     Bundle bundle = getIntent().getBundleExtra("dulieu2");
                     if(bundle != null){
                         age = bundle.getString("age").toString().trim();
@@ -61,7 +68,7 @@ public class QuestionPart3Activity extends AppCompatActivity {
                         oldpeak = bundle.getString("oldpeak").toString().trim();
 
                         ActionHeartDisease(age,sex,cp,trestbps,chol,fbs,restecg,thalach,exang,oldpeak,slope,ca,thal);
-                        CheckConnect.ShowToast(getApplicationContext(), age +" "+ sex+" "+cp+" "+trestbps+" "+chol+" "+fbs+" "+restecg+" "+exang+" "+thalach+" "+oldpeak);
+                        //CheckConnect.ShowToast(getApplicationContext(), age +" "+ sex+" "+cp+" "+trestbps+" "+chol+" "+fbs+" "+restecg+" "+exang+" "+thalach+" "+oldpeak);
 
 
                     }
@@ -95,11 +102,15 @@ public class QuestionPart3Activity extends AppCompatActivity {
                 @Override
                 public void onResponse(JSONObject response) {
                     if (response!=null){
-                        CheckConnect.ShowToast(getApplicationContext(),"Thanh cong");
+                      //  CheckConnect.ShowToast(getApplicationContext(),"Thanh cong");
                         try {
                             String result = response.getString("result");
                             String accuracy = response.getString("accuracy");
-                            CheckConnect.ShowToast(getApplicationContext(),result +" "+ accuracy);
+                            Calendar time = Calendar.getInstance();
+                            SimpleDateFormat df = new SimpleDateFormat("HH:mm:ss dd/MM/yyyy");
+                            String currenttime = df.format(time.getTime());
+                            ResultDiagnosis(result,accuracy,currenttime);
+                            //CheckConnect.ShowToast(getApplicationContext(),result +" "+ accuracy+" "+currenttime);
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -117,6 +128,47 @@ public class QuestionPart3Activity extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+    }
+
+    private void ResultDiagnosis(String result, String accuracy, String currenttime) {
+        final Dialog dialog = new Dialog(QuestionPart3Activity.this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        // dùng để goi layout dialog
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.setContentView(R.layout.dialog_detail_answer);
+        TextView resultDiagnosis = dialog.findViewById(R.id.txtResultDiagnosisReslut);
+        TextView resultTime = dialog.findViewById(R.id.txtDiagnosisTimeResult);
+        TextView resultAcc = dialog.findViewById(R.id.txtAccuracyReslut);
+        Button btnCancel = dialog.findViewById(R.id.btnCancelResult);
+        Button btnConfirm = dialog.findViewById(R.id.btnConfirmResult);
+        TextView feedback = dialog.findViewById(R.id.txtFeedbackResult);
+//        CheckConnect.ShowToast(getApplicationContext(),result);
+
+        if (result.equals("1.0"))
+            resultDiagnosis.setText("> 50% diameter narrowing");
+        else
+            resultDiagnosis.setText("< 50% diameter narrowing");
+        resultAcc.setText(accuracy);
+        resultTime.setText(currenttime);
+        dialog.getWindow().setLayout((int)(getResources().getDisplayMetrics().widthPixels*1.0),
+                (int)(getResources().getDisplayMetrics().heightPixels*0.90));
+        dialog.show();
+
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        btnConfirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(QuestionPart3Activity.this, QuestionActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
     }
 
     public void onRadioButtonClickSlope(View view) {

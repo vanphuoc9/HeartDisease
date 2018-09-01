@@ -49,7 +49,7 @@ public class QuestionActivity extends AppCompatActivity {
                 chol = editChol.getText().toString().trim();
                 if (choiceSex!=false && choiceCp != false && choiceFbs != false && !TextUtils.isEmpty(age) && !TextUtils.isEmpty(trestbps) && !TextUtils.isEmpty(chol)){
 
-                CheckConnect.ShowToast(getApplicationContext(),age+" "+trestbps+" "+chol+" "+sex +" "+cp+ " "+fbs);
+                //CheckConnect.ShowToast(getApplicationContext(),age+" "+trestbps+" "+chol+" "+sex +" "+cp+ " "+fbs);
 //                radioGroupSex.clearCheck();
 //                radioGroupChest.clearCheck();
 //                radioGroupBloodSugar.clearCheck();
