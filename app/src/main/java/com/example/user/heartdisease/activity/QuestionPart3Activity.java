@@ -18,6 +18,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.user.heartdisease.R;
+import com.example.user.heartdisease.model.HeartDisease;
 import com.example.user.heartdisease.ultil.CheckConnect;
 import com.example.user.heartdisease.ultil.Server;
 
@@ -80,7 +81,7 @@ public class QuestionPart3Activity extends AppCompatActivity {
 
     }
 
-    private void ActionHeartDisease(String age, String sex, String cp, String trestbps, String chol, String fbs, String restecg, String thalach, String exang, String oldpeak, String slope, String ca, String thal) {
+    private void ActionHeartDisease(final String age, final String sex, final String cp, final String trestbps, final String chol, final String fbs, final String restecg, final String thalach, final String exang, final String oldpeak, final String slope, final String ca, final String thal) {
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         JSONObject jsonObject = new JSONObject();
         try {
@@ -109,7 +110,8 @@ public class QuestionPart3Activity extends AppCompatActivity {
                             Calendar time = Calendar.getInstance();
                             SimpleDateFormat df = new SimpleDateFormat("HH:mm:ss dd/MM/yyyy");
                             String currenttime = df.format(time.getTime());
-                            ResultDiagnosis(result,accuracy,currenttime);
+                            HeartDisease heartDisease = new HeartDisease(age,sex,cp,trestbps,chol,fbs,restecg,thalach,exang,oldpeak,slope,ca,thal);
+                            ResultDiagnosis(result,accuracy,currenttime, heartDisease);
                             //CheckConnect.ShowToast(getApplicationContext(),result +" "+ accuracy+" "+currenttime);
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -130,7 +132,7 @@ public class QuestionPart3Activity extends AppCompatActivity {
         }
     }
 
-    private void ResultDiagnosis(String result, String accuracy, String currenttime) {
+    private void ResultDiagnosis(final String result, final String accuracy, final String currenttime, final HeartDisease heartDisease) {
         final Dialog dialog = new Dialog(QuestionPart3Activity.this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         // dùng để goi layout dialog
@@ -148,7 +150,7 @@ public class QuestionPart3Activity extends AppCompatActivity {
             resultDiagnosis.setText("> 50% diameter narrowing");
         else
             resultDiagnosis.setText("< 50% diameter narrowing");
-        resultAcc.setText(accuracy);
+        resultAcc.setText(accuracy+"%");
         resultTime.setText(currenttime);
         dialog.getWindow().setLayout((int)(getResources().getDisplayMetrics().widthPixels*1.0),
                 (int)(getResources().getDisplayMetrics().heightPixels*0.90));
@@ -168,6 +170,183 @@ public class QuestionPart3Activity extends AppCompatActivity {
                 finish();
             }
         });
+        feedback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+                FeedBack(result,accuracy,currenttime,heartDisease);
+            }
+        });
+
+    }
+
+    private void FeedBack(String result, String accuracy, String currenttime, HeartDisease heartDisease) {
+//                        Log.e("EEE","Age:  " +heartDisease.getAge()+"Sex: "+heartDisease.getSex()+"Cp: "
+//                        +heartDisease.getCp()+"Trestbps: "+heartDisease.getTrestbps()+"Chol: "+heartDisease.getChol()
+//                        +"Fbs: "+heartDisease.getFbs()
+//
+//                +"Restecg: "+heartDisease.getRestecg()+"Thalach: "+heartDisease.getThalach()+"Exang: "+heartDisease.getExang()
+//
+//                +"Oldpeak: "+heartDisease.getOldpeak()+"Slope: "+heartDisease.getSlope()+"Ca: "+heartDisease.getCa()
+//                        +"Thal: "+heartDisease.getThal());
+
+        final Dialog dialog = new Dialog(QuestionPart3Activity.this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        // dùng để goi layout dialog
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.setContentView(R.layout.dialog_detail_feedback);
+        TextView resultDiagnosis = dialog.findViewById(R.id.txtResultDiagnosisFeedback);
+        TextView resultTime = dialog.findViewById(R.id.txtDiagnosisTimeFeedback);
+        TextView resultAcc = dialog.findViewById(R.id.txtAccuracyFeedback);
+        TextView txtAge,txtSex,txtCp,txtTrestbps, txtChol, txtFbs, txtRestecg, txtThalach,txtExang, txtOldpeak, txtSlope, txtCa, txtThal;
+        txtAge = dialog.findViewById(R.id.txtAgeFeedback);
+        txtSex = dialog.findViewById(R.id.txtSexFeedback);
+        txtCp = dialog.findViewById(R.id.txtCpFeedback);
+        txtTrestbps = dialog.findViewById(R.id.txtTrestbpsFeedback);
+        txtChol = dialog.findViewById(R.id.txtCholFeedback);
+        txtFbs = dialog.findViewById(R.id.txtFbsFeedback);
+        txtRestecg = dialog.findViewById(R.id.txtRestecgFeedback);
+        txtThalach = dialog.findViewById(R.id.txtThalachFeedback);
+        txtExang = dialog.findViewById(R.id.txtExangFeedBack);
+        txtOldpeak = dialog.findViewById(R.id.txtOldpeakFeedback);
+        txtSlope = dialog.findViewById(R.id.txtSlopFeedback);
+        txtCa = dialog.findViewById(R.id.txtCaFeedback);
+        txtThal = dialog.findViewById(R.id.txtThalFeedback);
+        Button btnYes = dialog.findViewById(R.id.btnYesFeedBack);
+        Button btnNo = dialog.findViewById(R.id.btnNoFeedback);
+
+
+        if (result.equals("1.0"))
+            resultDiagnosis.setText("> 50% diameter narrowing");
+        else
+            resultDiagnosis.setText("< 50% diameter narrowing");
+        resultAcc.setText(accuracy+"%");
+        resultTime.setText(currenttime);
+
+
+
+        txtAge.setText(heartDisease.getAge());
+        if (heartDisease.getSex().equals("1"))
+            txtSex.setText("male");
+        else
+            txtSex.setText("female");
+        txtCp.setText(parseCP(heartDisease.getCp()));
+        txtTrestbps.setText(heartDisease.getTrestbps());
+        txtChol.setText(heartDisease.getChol());
+        txtFbs.setText(parseFBS(heartDisease.getFbs()));
+        txtRestecg.setText(parseRestecg(heartDisease.getRestecg()));
+        txtThalach.setText(heartDisease.getThalach());
+        txtExang.setText(parseExang(heartDisease.getExang()));
+        txtOldpeak.setText(heartDisease.getOldpeak());
+        txtSlope.setText(parseSlope(heartDisease.getSlope()));
+        txtCa.setText(heartDisease.getCa());
+        txtThal.setText(parseThal(heartDisease.getThal()));
+
+        dialog.getWindow().setLayout((int)(getResources().getDisplayMetrics().widthPixels*1.0),
+                (int)(getResources().getDisplayMetrics().heightPixels*0.90));
+        dialog.show();
+
+
+    }
+    // từ số sang chữ
+    private String parseCP(String number){
+        int num = Integer.parseInt(number);
+        String anw = "";
+        switch (num){
+            case 1:
+                anw = "typical angina";
+                break;
+            case 2:
+                anw = "atypical angina";
+                break;
+            case 3:
+                anw = "non-anginal pain";
+                break;
+            case 4:
+                anw = "asymptomatic ";
+                break;
+        }
+        return anw;
+
+    }
+    // đổi quyền: từ số sang chữ
+    private String parseFBS(String number){
+        int num = Integer.parseInt(number);
+        String anw = "";
+        switch (num){
+            case 0:
+                anw = "false";
+                break;
+            case 1:
+                anw = "true";
+                break;
+        }
+        return anw;
+
+    }
+    private String parseRestecg(String number){
+        int num = Integer.parseInt(number);
+        String anw = "";
+        switch (num){
+            case 0:
+                anw = "normal";
+                break;
+            case 1:
+                anw = "having ST-T wave abnormality";
+                break;
+            case 2:
+                anw = "showing probable or definite left ventricular hypertrophy";
+                break;
+        }
+        return anw;
+
+    }
+    private String parseExang(String number){
+        int num = Integer.parseInt(number);
+        String anw = "";
+        switch (num){
+            case 0:
+                anw = "true";
+                break;
+            case 1:
+                anw = "false";
+                break;
+        }
+        return anw;
+
+    }
+    private String parseSlope(String number){
+        int num = Integer.parseInt(number);
+        String anw = "";
+        switch (num){
+            case 1:
+                anw = "upsloping ";
+                break;
+            case 2:
+                anw = "flat ";
+                break;
+            case 3:
+                anw = "downsloping";
+                break;
+        }
+        return anw;
+
+    }
+    private String parseThal(String number){
+        int num = Integer.parseInt(number);
+        String anw = "";
+        switch (num){
+            case 3:
+                anw = "normal";
+                break;
+            case 6:
+                anw = "fixed defect";
+                break;
+            case 7:
+                anw = "reversable defect";
+                break;
+        }
+        return anw;
 
     }
 
@@ -235,7 +414,7 @@ public class QuestionPart3Activity extends AppCompatActivity {
             case R.id.radio_ques3_3:
                 if (checked) {// Pirates are the best
                     choiceCa = true;
-                    ca = "2";
+                    ca = "3";
                 }else{
                     choiceCa = false;
                 }
@@ -259,7 +438,7 @@ public class QuestionPart3Activity extends AppCompatActivity {
             case R.id.radio_ques3_fixed:
                 if (checked) {// Pirates are the best
                     choiceThal = true;
-                    thal = "4";
+                    thal = "6";
                 }else{
                     choiceThal = false;
                 }

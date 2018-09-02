@@ -1,0 +1,561 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="10"
+    android:background="#fff"
+    tools:context="com.example.user.heartdisease.activity.QuestionActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_gravity="center"
+        android:gravity="center"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Heart Disease"
+            android:textSize="30sp"
+            android:textColor="@color/colorAccent"
+            />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
+        android:layout_weight="8"
+        >
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Diagnostic results"
+                    android:layout_gravity="center"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="20sp"
+                    android:layout_marginBottom="10dp"
+                    />
+
+                <LinearLayout
+                    android:layout_marginBottom="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="3"
+                    >
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Diagnosis of heart disease: "
+                        android:textColor="#000"
+                        android:textSize="18sp"
+                        android:layout_weight="2"
+                        />
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="50% dimeter narrowing"
+                        android:textColor="#FF4081"
+                        android:textSize="18sp"
+                        android:layout_weight="1"
+                        android:id="@+id/txtResultDiagnosisFeedback"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginBottom="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="3"
+                    >
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Accuracy precision diagnosis: "
+                        android:textColor="#000"
+                        android:textSize="18sp"
+                        android:layout_weight="2"
+                        />
+                    <TextView
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="80%"
+                        android:textColor="#FF4081"
+                        android:textSize="18sp"
+                        android:layout_weight="1"
+                        android:id="@+id/txtAccuracyFeedback"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginBottom="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="3"
+                    >
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Diagnosis time: "
+                        android:textColor="#000"
+                        android:textSize="18sp"
+                        android:layout_weight="2"
+                        />
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="80%"
+                        android:textColor="#FF4081"
+                        android:textSize="18sp"
+                        android:layout_weight="1"
+                        android:id="@+id/txtDiagnosisTimeFeedback"
+                        android:gravity="center"
+                        />
+                </LinearLayout>
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="2dp"
+                    android:background="#c0c0c0"/>
+
+                <TextView
+                    android:layout_marginTop="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="This is your answer to heart disease"
+                    android:layout_gravity="center"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="20sp"
+                    android:layout_marginBottom="10dp"
+
+                    />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="3"
+                    android:layout_marginBottom="10dp"
+                    >
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Age: "
+                        android:textColor="#000"
+                        android:textSize="18sp"
+                        android:layout_weight="2"
+                        />
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="18"
+                        android:textColor="#FF4081"
+                        android:textSize="18sp"
+                        android:layout_weight="1"
+                        android:id="@+id/txtAgeFeedback"
+                        android:gravity="center"
+                        />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="3"
+                    android:layout_marginBottom="10dp"
+                    >
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Sex: "
+                        android:textColor="#000"
+                        android:textSize="18sp"
+                        android:layout_weight="2"
+                        />
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="male"
+                        android:textColor="#FF4081"
+                        android:textSize="18sp"
+                        android:layout_weight="1"
+                        android:id="@+id/txtSexFeedback"
+                        android:gravity="center"
+                        />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_marginBottom="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="3"
+                    >
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Chest pain type : "
+                        android:textColor="#000"
+                        android:textSize="18sp"
+                        android:layout_weight="2"
+                        />
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="non-anginal pain "
+                        android:textColor="#FF4081"
+                        android:textSize="18sp"
+                        android:layout_weight="1"
+                        android:id="@+id/txtCpFeedback"
+                        android:gravity="center"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginBottom="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="3"
+                    >
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Resting blood pressure : "
+                        android:textColor="#000"
+                        android:textSize="18sp"
+                        android:layout_weight="2"
+                        />
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="15"
+                        android:textColor="#FF4081"
+                        android:textSize="18sp"
+                        android:layout_weight="1"
+                        android:id="@+id/txtTrestbpsFeedback"
+                        android:gravity="center"
+
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginBottom="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="3"
+                    >
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Serum cholestoral in mg/dl: "
+                        android:textColor="#000"
+                        android:textSize="18sp"
+                        android:layout_weight="2"
+                        />
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="233"
+                        android:textColor="#FF4081"
+                        android:textSize="18sp"
+                        android:layout_weight="1"
+                        android:id="@+id/txtCholFeedback"
+                        android:gravity="center"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginBottom="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="3"
+                    >
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Fasting blood sugar > 120 mg/dl : "
+                        android:textColor="#000"
+                        android:textSize="18sp"
+                        android:layout_weight="2"
+                        />
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="True"
+                        android:textColor="#FF4081"
+                        android:textSize="18sp"
+                        android:layout_weight="1"
+                        android:id="@+id/txtFbsFeedback"
+                        android:gravity="center"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginBottom="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="3"
+                    >
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Resting electrocardiographic results: "
+                        android:textColor="#000"
+                        android:textSize="18sp"
+                        android:layout_weight="2"
+                        />
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="having ST-T wave abnormality "
+                        android:textColor="#FF4081"
+                        android:textSize="18sp"
+                        android:layout_weight="1"
+                        android:id="@+id/txtRestecgFeedback"
+                        android:gravity="center"
+                        />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_marginBottom="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="3"
+                    >
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Maximum heart rate achieved : "
+                        android:textColor="#000"
+                        android:textSize="18sp"
+                        android:layout_weight="2"
+                        />
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="233"
+                        android:textColor="#FF4081"
+                        android:textSize="18sp"
+                        android:layout_weight="1"
+                        android:id="@+id/txtThalachFeedback"
+                        android:gravity="center"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginBottom="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="3"
+                    >
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Exercise induced angina : "
+                        android:textColor="#000"
+                        android:textSize="18sp"
+                        android:layout_weight="2"
+                        />
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="True"
+                        android:textColor="#FF4081"
+                        android:textSize="18sp"
+                        android:layout_weight="1"
+                        android:id="@+id/txtExangFeedBack"
+                        android:gravity="center"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginBottom="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="3"
+                    >
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="ST depression induced by exercise relative to rest: "
+                        android:textColor="#000"
+                        android:textSize="18sp"
+                        android:layout_weight="2"
+                        />
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="2.3"
+                        android:textColor="#FF4081"
+                        android:textSize="18sp"
+                        android:layout_weight="1"
+                        android:id="@+id/txtOldpeakFeedback"
+                        android:gravity="center"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginBottom="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="3"
+                    >
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="The slope of the peak exercise ST segment: "
+                        android:textColor="#000"
+                        android:textSize="18sp"
+                        android:layout_weight="2"
+                        />
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="downsloping"
+                        android:textColor="#FF4081"
+                        android:textSize="18sp"
+                        android:layout_weight="1"
+                        android:id="@+id/txtSlopFeedback"
+                        android:gravity="center"
+                        />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_marginBottom="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="3"
+                    >
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Number of major vessels (0-3) colored by flourosopy: "
+                        android:textColor="#000"
+                        android:textSize="18sp"
+                        android:layout_weight="2"
+                        />
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textColor="#FF4081"
+                        android:textSize="18sp"
+                        android:layout_weight="1"
+                        android:id="@+id/txtCaFeedback"
+                        android:gravity="center"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginBottom="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="3"
+                    >
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Defect: "
+                        android:textColor="#000"
+                        android:textSize="18sp"
+                        android:layout_weight="2"
+                        />
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="reversable defect"
+                        android:textColor="#FF4081"
+                        android:textSize="18sp"
+                        android:layout_weight="1"
+                        android:id="@+id/txtThalFeedback"
+                        android:gravity="center"
+                        />
+                </LinearLayout>
+
+
+
+
+
+
+
+            </LinearLayout>
+
+
+        </ScrollView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:weightSum="5"
+        android:layout_margin="10dp"
+        >
+        <TextView
+            android:layout_weight="3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:text="Do you think the diagnosis is correct?"
+            android:layout_gravity="center"
+            android:textColor="#000"
+
+            />
+        <Button
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="No"
+            android:background="@drawable/boder"
+            android:textColor="@color/colorAccent"
+            android:layout_margin="5dp"
+            android:layout_gravity="center"
+            android:padding="5dp"
+            android:id="@+id/btnNoFeedback"
+            />
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Yes"
+            android:background="@color/colorAccent"
+            android:textColor="#ffffff"
+            android:layout_margin="5dp"
+            android:layout_gravity="center"
+            android:padding="5dp"
+            android:id="@+id/btnYesFeedBack"
+            />
+
+
+
+
+    </LinearLayout>
+
+</LinearLayout>

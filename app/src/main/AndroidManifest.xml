@@ -12,34 +12,42 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".activity.MainActivity">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.QuestionActivity" android:windowSoftInputMode="adjustPan">
+        <activity
+            android:name=".activity.QuestionActivity"
+            android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.QuestionPart2Activity" android:windowSoftInputMode="adjustPan">
+        <activity
+            android:name=".activity.QuestionPart2Activity"
+            android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.QuestionPart3Activity" android:windowSoftInputMode="adjustPan">
+        <activity
+            android:name=".activity.QuestionPart3Activity"
+            android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.FeedBackActivity" />
+        <activity android:name=".activity.FeedBack2Activity" />
+        <activity android:name=".activity.FeedBack3Activity"></activity>
     </application>
 
 </manifest>
