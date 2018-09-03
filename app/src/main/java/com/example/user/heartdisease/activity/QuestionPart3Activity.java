@@ -1,6 +1,7 @@
 package com.example.user.heartdisease.activity;
 
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -33,7 +34,8 @@ public class QuestionPart3Activity extends AppCompatActivity {
     private Button btnCancel, btnDisease;
     private String slope,ca, thal;
     private Boolean choiceSlope, choiceCa, choiceThal;
-    String sex, cp, fbs, chol, trestbps, age, restecg, exang, thalach, oldpeak ;
+    private String sex, cp, fbs, chol, trestbps, age, restecg, exang, thalach, oldpeak ;
+    private ProgressDialog progressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,6 +84,7 @@ public class QuestionPart3Activity extends AppCompatActivity {
     }
 
     private void ActionHeartDisease(final String age, final String sex, final String cp, final String trestbps, final String chol, final String fbs, final String restecg, final String thalach, final String exang, final String oldpeak, final String slope, final String ca, final String thal) {
+        ActionProgressbar("Diagnosis","Diagnosing the disease...");
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         JSONObject jsonObject = new JSONObject();
         try {
@@ -105,6 +108,7 @@ public class QuestionPart3Activity extends AppCompatActivity {
                     if (response!=null){
                       //  CheckConnect.ShowToast(getApplicationContext(),"Thanh cong");
                         try {
+                            progressDialog.dismiss();
                             String result = response.getString("result");
                             String accuracy = response.getString("accuracy");
                             Calendar time = Calendar.getInstance();
@@ -117,12 +121,71 @@ public class QuestionPart3Activity extends AppCompatActivity {
                             e.printStackTrace();
                         }
                     }else{
+                        progressDialog.dismiss();
                         CheckConnect.ShowToast(getApplicationContext(),"khong");
                     }
                 }
             }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
+                    progressDialog.dismiss();
+                    CheckConnect.ShowToast(getApplicationContext(),"loi");
+                }
+            });
+            requestQueue.add(jsonObjectRequest);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void ActionHeartFeedBack(final String age, final String sex, final String cp, final String trestbps, final String chol, final String fbs, final String restecg, final String thalach,
+                                     final String exang, final String oldpeak,
+                                     final String slope, final String ca, final String thal, String pred) {
+        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("age",Integer.parseInt(age));
+            jsonObject.put("sex",Integer.parseInt(sex));
+            jsonObject.put("cp",Integer.parseInt(cp));
+            jsonObject.put("trestbps",Integer.parseInt(trestbps));
+            jsonObject.put("chol",Integer.parseInt(chol));
+            jsonObject.put("fbs",Integer.parseInt(fbs));
+            jsonObject.put("restecg",Integer.parseInt(restecg));
+            jsonObject.put("thalach",Integer.parseInt(thalach));
+            jsonObject.put("exang",Integer.parseInt(exang));
+            jsonObject.put("oldpeak",Float.parseFloat(oldpeak));
+            jsonObject.put("slop",Integer.parseInt(slope));
+            jsonObject.put("ca",Integer.parseInt(ca));
+            jsonObject.put("thal",Integer.parseInt(thal));
+            jsonObject.put("pred", Integer.parseInt(pred));
+            //{"age": 63, "sex": 1, "cp": 1, "trestbps": 145, "chol": 233, "fbs": 1, "restecg": 2, "thalach": 150, "exang": 0, "oldpeak": 2.3, "slop": 3, "ca": 0, "thal": 6}
+            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, Server.getFeedBack, jsonObject, new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    if (response!=null){
+                        //  CheckConnect.ShowToast(getApplicationContext(),"Thanh cong");
+                        try {
+                            progressDialog.dismiss();
+                            String result = response.getString("result");
+                            if (result.equals("success")){
+                                CheckConnect.ShowToast(getApplicationContext(),"Success! Thank you!!!");
+                                Intent intent = new Intent(QuestionPart3Activity.this, QuestionActivity.class);
+                                startActivity(intent);
+                                finish();
+                            }
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }else{
+                        progressDialog.dismiss();
+                        CheckConnect.ShowToast(getApplicationContext(),"khong");
+                    }
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    progressDialog.dismiss();
                     CheckConnect.ShowToast(getApplicationContext(),"loi");
                 }
             });
@@ -243,10 +306,27 @@ public class QuestionPart3Activity extends AppCompatActivity {
         txtThal.setText(parseThal(heartDisease.getThal()));
 
         dialog.getWindow().setLayout((int)(getResources().getDisplayMetrics().widthPixels*1.0),
-                (int)(getResources().getDisplayMetrics().heightPixels*0.90));
+                (int)(getResources().getDisplayMetrics().heightPixels*1.0));
         dialog.show();
 
-
+        // action yes
+        btnYes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+               ActionProgressbar("FeedBack","Sending feedback...");
+               // CheckConnect.ShowToast(getApplicationContext(),Float.parseFloat(oldpeak)+"");
+                ActionHeartFeedBack(age,sex,cp,trestbps,chol,fbs,restecg,thalach,exang,oldpeak,slope,ca,thal,"1");
+            }
+        });
+        btnNo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+                ActionProgressbar("FeedBack","Sending feedback...");
+                ActionHeartFeedBack(age,sex,cp,trestbps,chol,fbs,restecg,thalach,exang,oldpeak,slope,ca,thal,"0");
+            }
+        });
     }
     // từ số sang chữ
     private String parseCP(String number){
@@ -263,7 +343,7 @@ public class QuestionPart3Activity extends AppCompatActivity {
                 anw = "non-anginal pain";
                 break;
             case 4:
-                anw = "asymptomatic ";
+                anw = "asymptomatic";
                 break;
         }
         return anw;
@@ -452,6 +532,14 @@ public class QuestionPart3Activity extends AppCompatActivity {
                 }
                 break;
         }
+    }
+    // ProgressBar
+    private void ActionProgressbar(String title, String message) {
+        progressDialog = new ProgressDialog(QuestionPart3Activity.this);
+        progressDialog.setTitle(title);
+        progressDialog.setMessage(message);
+        progressDialog.setCanceledOnTouchOutside(false);
+        progressDialog.show();
     }
 
     private void AnhXa() {

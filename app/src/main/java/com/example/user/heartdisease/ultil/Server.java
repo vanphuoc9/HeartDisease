@@ -5,5 +5,6 @@ package com.example.user.heartdisease.ultil;
  */
 
 public class Server {
-    public static String getResult = "http://172.20.10.2:5000/getResult";
+    public static String getResult = "https://heart-disease.herokuapp.com/getResult";
+    public static String getFeedBack = "https://heart-disease.herokuapp.com/feedback";
 }
