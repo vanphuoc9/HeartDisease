@@ -33,6 +33,7 @@ public class SplashScreenActivity extends AppCompatActivity {
     }
 
     private void sendtoActivity() {
+        //
         Intent intent = new Intent(SplashScreenActivity.this, QuestionActivity.class);
         startActivity(intent);
         finish();
